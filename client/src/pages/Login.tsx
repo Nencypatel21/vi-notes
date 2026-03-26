@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async () => {
     const data = await loginUser(email, password);
     alert(data.message);
-    
+
 
     if (data.message === "Login successful") {
       navigate("/editor");
@@ -20,8 +20,19 @@ function Login() {
   return (
     <div className="container">
       <h2>Login</h2>
-      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+      <input
+        type="email"
+        placeholder="Enter email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Enter password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <button onClick={handleLogin}>Login</button>
     </div>
   );

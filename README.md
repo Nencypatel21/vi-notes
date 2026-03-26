@@ -1,128 +1,154 @@
-# Vi-Notes
+# Vi-Notes – User Authentication Module
 
-**Vi-Notes** is an authenticity verification platform designed to distinguish genuine human-written content from AI-generated or AI-assisted text. The system focuses on analyzing **writing behavior** alongside **statistical and linguistic characteristics** of the text to establish reliable authorship verification.
+Vi-Notes is an authenticity verification platform designed to distinguish genuine human-written content from AI-generated or AI-assisted text. The system focuses on analyzing writing behavior alongside statistical and linguistic characteristics of text.
 
-This repository represents the **design and conceptual foundation** for the Vi-Notes system.
-
----
-
-## Motivation
-
-With the widespread availability of AI writing tools, verifying true human authorship has become increasingly challenging. Most existing detection methods rely primarily on textual analysis, which can be inconsistent and easy to bypass.
-
-Vi-Notes approaches this problem by combining:
-- Behavioral signals from the writing process
-- Statistical analysis of the written content
-- Correlation between how content is written and what is written
+This contribution implements the **User Login and Registration feature**, which serves as the foundation for associating writing sessions with individual users.
 
 ---
 
-## Core Idea
+## Feature Implemented
 
-Human writing naturally includes:
-- Variable typing speeds
-- Pauses during thinking
-- Revisions during idea formation
-- Irregular sentence structures
-- A relationship between content complexity and editing frequency
+### User Login and Registration
 
-AI-generated or pasted text often lacks these behavioral signatures.
+Implemented basic user authentication to ensure that each writing session can be linked to a specific user.
 
-Vi-Notes is designed to capture and analyze these characteristics to assess authorship authenticity.
+* Users can sign up using email and password
+* Users can log in using the same credentials
+* Duplicate user validation is handled
+* Invalid login attempts are handled
+* Successful login redirects user to a basic editor page
 
----
-
-## Key Features
-
-### Writing Session Monitoring
-- Capture keystroke timing metadata (not raw key content)
-- Track pauses, deletions, edits, and writing flow
-- Detect pasted or externally inserted text blocks
-
-### Behavioral Pattern Analysis
-- Pause distribution before sentences and paragraphs
-- Typing speed variance
-- Revision frequency relative to text complexity
-- Micro-pauses around punctuation and structural boundaries
-
-### Textual Statistical Analysis
-- Sentence length variation
-- Vocabulary diversity metrics
-- Stylistic consistency analysis
-- Linguistic irregularities typical of human writing
-
-### Cross-Verification Engine
-- Correlate keyboard behavior with text evolution
-- Identify mismatches between behavioral data and content
-- Flag suspicious uniformity patterns
-
-### Authenticity Reports
-- Confidence score for human authorship
-- Highlighted suspicious segments
-- Supporting behavioral and textual indicators
-- Shareable verification summaries
+Advanced features such as roles, password reset, and authentication tokens are not included at this stage.
 
 ---
 
-## Tech Stack (MERN Architecture)
+## Tech Stack
 
 ### Frontend
-- React
-- TypeScript
-- Electron for desktop-level keyboard event access
+
+* React (TypeScript)
+* Vite
+* React Router DOM
 
 ### Backend
-- Node.js
-- Express.js
-- RESTful APIs for session handling and analysis
+
+* Node.js
+* Express.js
+* TypeScript
 
 ### Database
-- MongoDB
-- Encrypted storage for writing sessions, keystroke metadata, and reports
 
-### Machine Learning
-- TensorFlow / PyTorch
-- Supervised learning for human vs AI-assisted writing
-- Unsupervised anomaly detection
-- NLP-based statistical signature analysis
+* MongoDB Atlas
 
 ---
 
-## Privacy & Ethics
+## Project Structure
 
-Vi-Notes is designed with privacy-first principles:
-
-- No storage of raw keystroke content
-- Only timing, frequency, and structural metadata is collected
-- Encrypted data storage
-- User-controlled session tracking
-- Monitoring limited strictly to active writing sessions
-
----
-
-## Project Goals
-
-- Restore trust in written content authenticity
-- Differentiate between human-written, AI-assisted, and AI-generated text
-- Adapt detection methods as AI writing tools evolve
-- Maintain ethical, transparent, and privacy-conscious verification
+```
+vi-notes/
+├── client/        # Frontend (React + Vite)
+├── server/        # Backend (Node + Express)
+└── README.md
+```
 
 ---
 
-## Repository Scope
+## Setup Instructions
 
-This repository currently serves as:
-- A design reference
-- A research and experimentation space
-- A foundation for future MERN-based implementation
+### 1. Clone the Repository
+
+```
+git clone https://github.com/Nencypatel21/vi-notes.git
+cd vi-notes
+```
 
 ---
 
-## Contributing
+## Backend Setup
 
-Contributions are welcome, especially for **feature requests and their implementation**.  
-If you are interested in working on an existing feature request or proposing a new one, please open or comment on an issue to start the discussion.
+```
+cd server
+npm install
+```
 
+Create a `.env` file inside the `server` directory:
+```
+MONGO_URL=your_mongodb_connection_string_here
+```
+
+Run the backend server:
+```
+npm run dev
+```
+
+The backend will run on:
+```
+http://localhost:5000
+```
+
+---
+
+## Frontend Setup
+
+```
+cd client
+npm install
+```
+
+Create a `.env` file inside the `client` directory:
+```
+VITE_API_URL=http://localhost:5000/api
+```
+
+Run the frontend:
+```
+npm run dev
+```
+
+The frontend will run on:
+```
+http://localhost:5173
+```
+
+---
+
+## Application Flow
+
+```
+Home → Signup → Login → Editor
+```
+
+* Users register using email and password
+* Users log in with registered credentials
+* After login, users are redirected to a basic editor page
+
+---
+
+## Contribution Scope
+
+This contribution includes:
+
+* Implementation of authentication APIs (register and login)
+* Integration with MongoDB Atlas
+* Frontend forms for signup and login
+* API integration between frontend and backend
+* Basic navigation flow
+
+This serves as a foundational step for future features such as writing behavior analysis and authenticity verification.
+
+---
+
+## Important Notes
+
+* `.env` files are not included in the repository for security reasons
+* A valid MongoDB connection string is required to run the backend
+* Backend server must be running before starting the frontend
+
+---
+
+## Author
+
+PATEL NENCY DASHARATHBHAI
 ---
 
 ## License
