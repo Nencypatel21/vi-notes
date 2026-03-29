@@ -11,6 +11,7 @@ function Editor() {
     <div>
       <h2>Editor</h2>
       <textarea
+        placeholder="Start writing here..."
         rows={10}
         cols={50}
         value={text}

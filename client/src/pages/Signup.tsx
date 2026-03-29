@@ -18,21 +18,26 @@ function Signup() {
 
   return (
     <div className="container">
-      <h2>Signup</h2>
+      <h2>Sign up</h2>
+      
+      <label>Email</label>
       <input
         type="email"
         placeholder="Enter email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
+      <label>Password</label>
       <input
         type="password"
         placeholder="Enter password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleSignup}>Register</button>
+      <div className="bottom-bar">
+        <button className="back-btn" onClick={() => navigate("/")}>← Back</button>
+        <button className="action-btn" onClick={handleSignup}>Register </button>
+      </div>
     </div>
   );
 }

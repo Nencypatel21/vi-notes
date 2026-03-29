@@ -19,21 +19,27 @@ function Login() {
 
   return (
     <div className="container">
-      <h2>Login</h2>
+      <h2>Log in</h2>
+      
+      {/* <br /> */}
+      <label>Email</label>
       <input
         type="email"
         placeholder="Enter email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
+      <label>Password</label>
       <input
         type="password"
         placeholder="Enter password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <div className="bottom-bar">
+        <button className="back-btn" onClick={() => navigate("/")}>← Back</button>
+        <button className="action-btn" onClick={handleLogin}>Log in →</button>
+      </div>
     </div>
   );
 }
